@@ -31,19 +31,26 @@ public class FlowerTest {
     @Test
     public void testPrice() {
         int price = RANDOM_GENERATOR.nextInt(MAX_PRICE);
-        int price1 = RANDOM_GENERATOR.nextInt(MAX_PRICE);
+        int priceSecond = RANDOM_GENERATOR.nextInt(MAX_PRICE);
         flower.setPrice(price);
-        flowerSecond.setPrice(price1);
+        flowerSecond.setPrice(priceSecond);
         Assertions.assertEquals(price, flower.getPrice());
         // print(pack.toString());
 
-        pack = new FlowerPack(flower, RANDOM_GENERATOR.nextInt(100));
+        pack = new FlowerPack(flower, RANDOM_GENERATOR.nextInt(MAX_PRICE));
         Assertions.assertEquals(price*pack.getQuantity(), pack.getPrice());
 
-        packSecond = new FlowerPack(flowerSecond, RANDOM_GENERATOR.nextInt(100));
-        Assertions.assertEquals(price1*packSecond.getQuantity(), packSecond.getPrice());
+        packSecond = new FlowerPack(
+                flowerSecond,
+                RANDOM_GENERATOR.nextInt(MAX_PRICE));
+
+        Assertions.assertEquals(
+                priceSecond*packSecond.getQuantity(),
+                packSecond.getPrice());
 
         bucket = new FlowerBucket(pack, packSecond);
-        Assertions.assertEquals(bucket.getPrice(), packSecond.getPrice()+pack.getPrice());
+        Assertions.assertEquals(
+                bucket.getPrice(),
+                packSecond.getPrice()+pack.getPrice());
     }
 }
