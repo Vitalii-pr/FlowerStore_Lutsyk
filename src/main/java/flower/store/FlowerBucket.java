@@ -11,20 +11,22 @@ public class FlowerBucket {
     @Getter
     private int amount;
 
-    public FlowerBucket(FlowerPack... packs){
+    public FlowerBucket(FlowerPack... packs) {
         this.packs = Arrays.asList(packs);
         this.amount = packs.length;
     }
 
-    public void addPack(FlowerPack fl){
+    public void addPack(FlowerPack fl) {
         packs.add(fl);
         amount += 1;
     }
 
-    public double getPrice(){
+    public double getPrice() {
         double sum = 0;
 
-        for(FlowerPack fl:packs){sum += fl.getPrice();}
+        for (FlowerPack fl:packs) {
+            sum += fl.getPrice();
+        }
 
         return sum;
     }
